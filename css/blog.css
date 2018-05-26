@@ -1,5 +1,5 @@
 html{
-	background: url(../images/background.jpg) no-repeat center center fixed;
+	background: url(../images/sandiego.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -10,10 +10,10 @@ html{
 	background-color: rgba(0,0,0,0.7);
 	color: white;
 	padding: 25px;
-	height: 945px;
-	width: 300px;
+	height: 775px;
+	width: 350px;
 }
-.profile_pic{
-	height: 200px;
-	border-radius: 50%;
+.week1photos {
+	height: 250px;
+	width: 350px;
 }
