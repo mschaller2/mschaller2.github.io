@@ -1,5 +1,5 @@
 html{
-	background: url(../images/beach.jpg) no-repeat center center fixed;
+	background: url(../images/skyline.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -10,10 +10,10 @@ html{
 	background-color: rgba(0,0,0,0.7);
 	color: white;
 	padding: 25px;
-	height: 725px;
+	height: 390px;
 	width: 350px;
 }
-.week1photos {
+.singphotos {
 	height: 250px;
 	width: 350px;
 }
