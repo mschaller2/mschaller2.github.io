@@ -7,7 +7,7 @@ html{
 	background-color: rgba(0,0,0,0.7);
 	color: white;
 	padding: 25px;
-	height: 100vh;
+	height: wrap_content;
 	width: 250px;
 	float: left;
 }
@@ -16,7 +16,7 @@ html{
 	background-color: rgba(0, 0, 0, 0.7);
 	color: white;
 	padding: 25px;
-	height: 100hv;
+	height: wrap_content;
 	width: 250px;
 	float: right;
 }
