@@ -6,7 +6,9 @@
                 var body = document.getElementById("driver");
                 var text = "";
                 var i;
-                for (i = 0; i < body.length - 1 ;i++) {
+                var file = body.elements[body.length - 2].value;
+
+                for (i = 0; i < body.length - 2 ;i++) {
                     text += body.elements[i].value + "<br>";
                 }
                 Email.send({
@@ -16,7 +18,7 @@
                     To : 'mitchell.schaller@gmail.com',
                     From : "testplowed@gmail.com",
                     Subject : "Driver Verification",
-                    Body : text
+                    Body : {text, file}
                 })
                 .then(function(message){
                     alert("mail sent successfully")
@@ -31,7 +33,7 @@
         Name  <input type="text"><br><br>
         Location  <input type="text"><br><br>
         Details of Vehicle/Plower  <input type="text"><br><br>
-        Driver's License Number  <input type="text"><br><br>
+        Driver's License Copy  <input type="file" id="license" accept=".jpg, .png, .pdf"><br><br>
         <input type="button" value="Submit Info" onclick="sendEmail()"/>
         </form>
     </p>
