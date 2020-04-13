@@ -24,6 +24,7 @@ function test() {
     element.translateY(1);
   });
   world.add(skyBox);
+  world.add(cube);
   world.go();
 }
 Helpers.onWindowOnload(test);
