@@ -77,7 +77,7 @@ DAT.Globe = function(container, opts) {
   var zoomSpeed = 50;
 
   var mouse = { x: 0, y: 0 }, mouseOnDown = { x: 0, y: 0 };
-  var rotation = { x: 0, y: 0 },
+  var rotation = { x: 0, y: 0 }, incr_rotation = {x: -.002, y: 0}
       target = { x: Math.PI*3/2, y: Math.PI / 6.0 },
       targetOnDown = { x: 0, y: 0 };
 
@@ -189,7 +189,7 @@ DAT.Globe = function(container, opts) {
           lng = data[i + 1];
 //        size = data[i + 2];
           color = colorFnWrapper(data,i);
-          size = 0;
+          size = 1;
           addPoint(lat, lng, size, color, this._baseGeometry);
         }
       }
@@ -227,16 +227,16 @@ DAT.Globe = function(container, opts) {
             }));
       } else {
         if (this._baseGeometry.morphTargets.length < 8) {
-          console.log('t l',this._baseGeometry.morphTargets.length);
+          //console.log('t l',this._baseGeometry.morphTargets.length);
           var padding = 8-this._baseGeometry.morphTargets.length;
-          console.log('padding', padding);
+         //console.log('padding', padding);
           for(var i=0; i<=padding; i++) {
-            console.log('padding',i);
+            //console.log('padding',i);
             this._baseGeometry.morphTargets.push({'name': 'morphPadding'+i, vertices: this._baseGeometry.vertices});
           }
         }
         this.points = new THREE.Mesh(this._baseGeometry, new THREE.MeshBasicMaterial({
-              color: 0xffffff,
+              color: 0xff0000,
               vertexColors: THREE.FaceColors,
               morphTargets: true
             }));
@@ -246,7 +246,6 @@ DAT.Globe = function(container, opts) {
   }
 
   function addPoint(lat, lng, size, color, subgeo) {
-
     var phi = (90 - lat) * Math.PI / 180;
     var theta = (180 - lng) * Math.PI / 180;
 
@@ -334,9 +333,7 @@ DAT.Globe = function(container, opts) {
   }
 
   function onWindowResize( event ) {
-    camera.aspect = container.offsetWidth / container.offsetHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize( container.offsetWidth, container.offsetHeight );
+    location.reload();
   }
 
   function zoom(delta) {
@@ -353,6 +350,8 @@ DAT.Globe = function(container, opts) {
   function render() {
     zoom(curZoomSpeed);
 
+    target.x += incr_rotation.x;
+    target.y += incr_rotation.y;
     rotation.x += (target.x - rotation.x) * 0.1;
     rotation.y += (target.y - rotation.y) * 0.1;
     distance += (distanceTarget - distance) * 0.3;
