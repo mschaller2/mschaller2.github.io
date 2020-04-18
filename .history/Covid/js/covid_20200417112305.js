@@ -16,12 +16,11 @@ let countries = function(globe){
     .then(data => {
         for (var location in data){
             data[location].forEach(({date, confirmed, recovered, deaths }) => {
-                if (date === "2020-4-17"){
+                if (date === "2020-4-16"){
                     dailyCount[location] = confirmed - recovered - deaths;
                 }
                 });
         }
-        console.log(dailyCount);
     });
     fetch("../Covid/countries.json")
     .then(response => response.json())
@@ -30,7 +29,7 @@ let countries = function(globe){
             if (capital === "primary" && dailyCount[country] != undefined){
                 var size = dailyCount[country] / 75000;
                 // todo automate retrieval based on date 
-                console.log(`${country} : ${dailyCount[country]} cases`);
+                //console.log(`${country} : ${dailyCount[country]} cases`);
                 countryList.push([lat, lng, size]);
             }
         });

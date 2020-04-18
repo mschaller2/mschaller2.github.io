@@ -21,7 +21,6 @@ let countries = function(globe){
                 }
                 });
         }
-        console.log(dailyCount);
     });
     fetch("../Covid/countries.json")
     .then(response => response.json())
@@ -30,7 +29,7 @@ let countries = function(globe){
             if (capital === "primary" && dailyCount[country] != undefined){
                 var size = dailyCount[country] / 75000;
                 // todo automate retrieval based on date 
-                console.log(`${country} : ${dailyCount[country]} cases`);
+                //console.log(`${country} : ${dailyCount[country]} cases`);
                 countryList.push([lat, lng, size]);
             }
         });
