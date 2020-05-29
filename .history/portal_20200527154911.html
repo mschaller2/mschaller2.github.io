@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: 'AIzaSyCcipKtl4JMxJ1vuCNL1kUKbjCUk_olqZ0',
+        authDomain: 'a-boys.firebaseapp.com',
+        databaseURL: 'https://a-boys.firebaseio.com',
+        projectId: 'a-boys',
+        storageBucket: 'a-boys.appspot.com',
+        messagingSenderId: '392524309890',
+        appId: '1:392524309890:web:071a0a584675a133ab9b9b',
+        measurementId: 'G-DBVH0WPEYR',
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      var database = firebase.database().ref('assignments/');
+      database.on(
+        'value',
+        function (snapshot) {
+          var list = snapshot.val();
+          for (const listing in list) {
+            var info = list[listing];
+            for (const infoItem in info) {
+              var content = document.createElement('p');
+              content.innerHTML = info[infoItem] + '<br/>';
+              document.body.insertBefore(
+                content,
+                document.getElementById('blank')
+              );
+            }
+          }
+        },
+        function (errorObject) {
+          console.log('The read failed');
+        }
+      );
+      console.log(database);
+    </script>
+  </head>
+  <body>
+    <p id="blank"></p>
+  </body>
+</html>
