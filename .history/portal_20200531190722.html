@@ -30,7 +30,6 @@
             var list = snapshot.val();
             for (const listing in list) {
               var info = list[listing];
-              var uID = info.uID;
               for (const infoItem in info) {
                 var content = document.createElement('p');
                 content.innerHTML = info[infoItem];
@@ -45,13 +44,7 @@
               );
               var buttonDelete = document.createElement('button');
               buttonDelete.innerHTML = 'Complete';
-              buttonDelete.onclick = function () {
-                firebase
-                  .database()
-                  .ref('assignments/' + uID)
-                  .remove();
-                location.reload();
-              };
+              buttonDelete.onclick = deleteListing;
               document.body.insertBefore(
                 buttonDelete,
                 document.getElementById('blank')
@@ -69,6 +62,9 @@
         } else {
           alert('Error Password or Username');
         }
+      }
+      function deleteListing() {
+        window.alert('hello');
       }
     </script>
   </head>

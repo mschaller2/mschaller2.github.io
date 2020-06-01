@@ -30,7 +30,6 @@
             var list = snapshot.val();
             for (const listing in list) {
               var info = list[listing];
-              var uID = info.uID;
               for (const infoItem in info) {
                 var content = document.createElement('p');
                 content.innerHTML = info[infoItem];
@@ -41,19 +40,6 @@
               }
               document.body.insertBefore(
                 document.createElement('br'),
-                document.getElementById('blank')
-              );
-              var buttonDelete = document.createElement('button');
-              buttonDelete.innerHTML = 'Complete';
-              buttonDelete.onclick = function () {
-                firebase
-                  .database()
-                  .ref('assignments/' + uID)
-                  .remove();
-                location.reload();
-              };
-              document.body.insertBefore(
-                buttonDelete,
                 document.getElementById('blank')
               );
             }
